@@ -19,12 +19,14 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PostMapping("/address")
     public ResponseEntity<?> create(@RequestBody Address address){
         addressService.create(address);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @GetMapping("/address")
     public ResponseEntity<List<Address>>readeAll(){
         final List<Address> clientList = addressService.readAll();
@@ -33,6 +35,7 @@ public class AddressController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @GetMapping("/address/{id}")
     public ResponseEntity<Address> readId(@PathVariable(name = "id") int id){
         final Address address = addressService.readById(id);
@@ -41,6 +44,7 @@ public class AddressController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PutMapping("/address")
     public ResponseEntity<?> update(@RequestBody Address address){
         final  boolean update = addressService.update(address);
@@ -49,6 +53,7 @@ public class AddressController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @DeleteMapping("/address/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id){
         boolean delete = addressService.delete(id);
@@ -57,6 +62,7 @@ public class AddressController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PatchMapping("/address")
     public ResponseEntity<?> updatePartial(@RequestBody Address address ){
         final boolean updateField = addressService.updatePartial(address);

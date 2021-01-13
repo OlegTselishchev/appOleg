@@ -20,13 +20,15 @@ public class ClientController {
     public ClientController(ClientService clientService) {
         this.clientService = clientService;
     }
+
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PostMapping("/client")
     public ResponseEntity<?> create(@RequestBody Client client){
         clientService.create(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @GetMapping("/client")
     public ResponseEntity<List<Client>> readAll(){
         final List<Client> clientList = clientService.readAll();
@@ -35,7 +37,7 @@ public class ClientController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @GetMapping("/client/{id}")
     public ResponseEntity<Client> readById(@PathVariable(name = "id") Integer id){
         final Client client = clientService.readById(id);
@@ -43,7 +45,7 @@ public class ClientController {
                 ? new ResponseEntity<>(client, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PutMapping("/client")
     public ResponseEntity<?> update(@RequestBody Client client){
         final  boolean update = clientService.update(client);
@@ -52,6 +54,7 @@ public class ClientController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @DeleteMapping("/client/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") Integer id){
         boolean delete = clientService.delete(id);
@@ -60,6 +63,7 @@ public class ClientController {
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
+    @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
     @PatchMapping("/client")
     public ResponseEntity<?> updatePartial(@RequestBody Client client ){
         final boolean updateField = clientService.updatePartial(client);
