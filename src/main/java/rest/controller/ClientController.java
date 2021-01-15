@@ -22,6 +22,7 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/client")
     public ResponseEntity<?> create(@RequestBody Client client){
         clientService.create(client);
@@ -29,6 +30,7 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/client")
     public ResponseEntity<List<Client>> readAll(){
         final List<Client> clientList = clientService.readAll();
@@ -38,6 +40,7 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/client/{id}")
     public ResponseEntity<Client> readById(@PathVariable(name = "id") Integer id){
         final Client client = clientService.readById(id);
@@ -45,7 +48,9 @@ public class ClientController {
                 ? new ResponseEntity<>(client, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/client")
     public ResponseEntity<?> update(@RequestBody Client client){
         final  boolean update = clientService.update(client);
@@ -55,6 +60,7 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/client/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") Integer id){
         boolean delete = clientService.delete(id);
@@ -64,6 +70,7 @@ public class ClientController {
     }
 
     @CrossOrigin(origins = "https://app-oleg-f.herokuapp.com")
+    //@CrossOrigin(origins = "http://localhost:4200")
     @PatchMapping("/client")
     public ResponseEntity<?> updatePartial(@RequestBody Client client ){
         final boolean updateField = clientService.updatePartial(client);
@@ -71,6 +78,4 @@ public class ClientController {
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
-
-
 }
